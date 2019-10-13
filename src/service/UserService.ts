@@ -29,7 +29,7 @@ class UserRepository {
     const newUser = this.users.get(Number(id))
     if (!newUser) {
       console.log('This user doesnt exist')
-      return -1
+      return -2
     }
     const newUserOnQueue = new UserOnQueue(newUser.name, newUser.email, newUser.gender, newUser.id)
     newUserOnQueue.position = queue.length
