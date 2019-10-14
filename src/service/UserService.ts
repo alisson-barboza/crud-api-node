@@ -4,10 +4,10 @@ import { UserOnQueue } from '../models/UserOnQueue'
 
 class UserRepository {
   private lastId:number
-  private users: Map<number, User>
+  private usersMap: Map<number, User>
 
   public constructor () {
-    this.users = new Map()
+    this.usersMap = new Map()
     const array = JsonParser.readQueueu()
     const user = array[array.length - 1]
     if (user) {
@@ -20,13 +20,13 @@ class UserRepository {
   public createUser (user:User):User {
     this.lastId++
     user.id = this.lastId
-    this.users.set(user.id, user)
+    this.usersMap.set(user.id, user)
     return user
   }
 
   public addToLine (id:number):number {
     const queue = JsonParser.readQueueu()
-    const newUser = this.users.get(Number(id))
+    const newUser = this.usersMap.get(Number(id))
     if (!newUser) {
       console.log('This user doesnt exist')
       return -2
