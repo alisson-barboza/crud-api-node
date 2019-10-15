@@ -3,7 +3,7 @@ import JsonParser from '../utils/JsonParser'
 import { UserOnQueue } from '../models/UserOnQueue'
 
 class UserRepository {
-  private lastId:number
+  private lastId: number
   private usersMap: Map<number, User>
 
   public constructor () {
@@ -17,14 +17,14 @@ class UserRepository {
     }
   }
 
-  public createUser (user:User):User {
+  public createUser (user: User): User {
     this.lastId++
     user.id = this.lastId
     this.usersMap.set(user.id, user)
     return user
   }
 
-  public addToLine (id:number):number {
+  public addToLine (id: number): number {
     const queue = JsonParser.readQueueu()
     const newUser = this.usersMap.get(Number(id))
     if (!newUser) {
@@ -50,7 +50,7 @@ class UserRepository {
     return -1
   }
 
-  public findPosition (email:string): number {
+  public findPosition (email: string): number {
     const queue = JsonParser.readQueueu()
     if (queue.length !== 0) {
       const user = queue.find((user) => user.email === email)
@@ -62,7 +62,7 @@ class UserRepository {
       }
     } else {
       console.log('The queue is empty')
-      return -1
+      return -2
     }
   }
 
@@ -70,11 +70,11 @@ class UserRepository {
     return JsonParser.readQueueu()
   }
 
-  public filterLine (gender:string):UserOnQueue[] {
+  public filterLine (gender: string): UserOnQueue[] {
     return JsonParser.readQueueu().filter((element) => element.gender === gender)
   }
 
-  public popLine ():User {
+  public popLine (): User {
     const queue = JsonParser.readQueueu()
     if (queue.length === 0) {
       console.log('The queue is empty')

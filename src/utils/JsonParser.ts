@@ -4,7 +4,7 @@ import { UserOnQueue } from '../models/UserOnQueue'
 class JsonParser {
     private defaultPath = 'database/Queue.json'
 
-    public readQueueu ():UserOnQueue[] {
+    public readQueueu (): UserOnQueue[] {
       const dataBuffer = fs.readFileSync(this.defaultPath)
       if (dataBuffer.toString().length === 0) {
         return []
@@ -12,7 +12,7 @@ class JsonParser {
       return JSON.parse(dataBuffer.toString())
     }
 
-    public add (users:UserOnQueue[]):void {
+    public add (users: UserOnQueue[]): void {
       fs.writeFileSync(this.defaultPath, JSON.stringify(users))
     }
 }
