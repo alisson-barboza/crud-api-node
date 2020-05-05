@@ -1,6 +1,6 @@
-# Queue-rpc-node
+# Queue-node
 
-  RPC API developed using Node.Js plus Typescript, Jest for Unit Test, Sucrase as transpiler, Nodemon and Express.
+  API developed using Node.Js plus Typescript, Jest for Unit Test, Sucrase as transpiler, Nodemon and Express.
 The main goal of this API is to manage an users queue, e.g.:  create an user, insert it the queue, remove the first user, show all the queue, and so on...
 
 ## How to execute
